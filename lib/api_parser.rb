@@ -1,28 +1,20 @@
-require 'net/http'
-require 'open-uri'
-require 'json'
- 
-class API_parser
- 
-  URL = "https://api.rawg.io/api/games/id"
- 
-  def get_games
-    uri = URI.parse(URL)
-    response = Net::HTTP.get_response(uri)
-    response.body
-  end
- 
+# require 'net/http'
+# require 'open-uri'
+# require 'json'
 
-def game_list
-      games = JSON.parse(self.get_games)
-      games.collect do |game|
-        game  
-      end
-    end
+
+class Gamerfluent::API_parser
+
+  BASE_URL = "https://api.rawg.io/api/"
+
+  def self.get_games
+    url = BASE_URL + "games"
+    result = HTTParty.get(url)
+    Gamerfluent::Video_game.mass_create_from_api([])
+  end 
 end 
-
-    games = API_parser.new
-puts games.game_list.uniq
+ 
 
 
-#need to parse through a list of games and allow a user to ask to see metacritic score (rating), genre, platform, synopsis
+
+#need to parse through a list of games and allow a user to ask to see metacritic score (rating), genre, synopsis
