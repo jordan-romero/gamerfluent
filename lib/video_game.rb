@@ -15,9 +15,9 @@ class Gamerfluent::Video_game
     end 
 
     def self.mass_create_from_api(gamearr)
-        # gamearr.find_all do |gamehash|
-        #     new(gamehash["name"], gamehash["genres"], gamehash["rating"])
-        # end 
+        gamearr.find_all do |gamehash|
+            new(gamehash["name"], gamehash["genres"], gamehash["rating"])
+        end 
 
         # gamearr.map do |gamehash|
         #     gamehash.select do |key, value|

@@ -10,7 +10,7 @@ class Gamerfluent::API_parser
   def self.get_games
     url = BASE_URL + "games"
     result = HTTParty.get(url)
-    Gamerfluent::Video_game.mass_create_from_api([])
+    #Gamerfluent::Video_game.mass_create_from_api([])
   end 
 end 
  
