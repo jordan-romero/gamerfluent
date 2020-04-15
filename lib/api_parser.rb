@@ -17,6 +17,7 @@ class Gamerfluent::API_parser
       url = BASE_URL + "games/" + videogame.id.to_s
       result = HTTParty.get(url)
       description = result["description"]
+      desc_text= Nokogiri::HTML(description).text
       rating = result["rating"]
       metacritic = result["metacritic"]
       website = result["website"]
