@@ -21,7 +21,9 @@ class Gamerfluent::Cli_manager
 end 
 
   def display_game(i)
-    puts i
+    puts Gamerfluent::VideoGame.all[i]
+    puts "Press any key to continue:"
+    gets 
   end 
 
   def get_videogame_choice
