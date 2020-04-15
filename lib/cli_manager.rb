@@ -20,8 +20,13 @@ class Gamerfluent::Cli_manager
   end
 end 
 
+  def self.informed?
+    !!@description
+  end 
+
   def display_game(i)
-    puts Gamerfluent::VideoGame.all[i]
+    g = Gamerfluent::VideoGame.all[i]
+    Gamerfluent::VideoGame.get_more_game_info(g) if g.!informed?
     puts "Press any key to continue:"
     gets 
   end 
@@ -46,7 +51,12 @@ end
   end 
   
   def introduction 
-    puts "Welcome to Gamerfluent!"
+    puts "\n\n\n\n\n"
+    puts "Welcome to Gamerfluent!" 
+    puts "Learn more about games to"
+    puts "decide what to play next!"
+    sleep(2)
+    puts "\n\n\n\n\n"
   end 
 
   def display_games
@@ -58,5 +68,7 @@ end
   def display_instructions 
     puts "Please choose a game by number or type 'exit' to exit the program." 
   end 
+
+  
 end 
  

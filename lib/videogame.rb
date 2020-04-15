@@ -8,7 +8,7 @@ class Gamerfluent::VideoGame
 
     @@all = []
 
-    attr_accessor :name, :id 
+    attr_accessor :name, :id, :description, :rating, :metacritic, :genres 
 
     def self.all
         @@all
@@ -22,6 +22,8 @@ class Gamerfluent::VideoGame
 
     def initialize (id, name)
         @id, @name = id, name 
+        @description, @rating, @metacritic = nil, nil, nil
+        @genres = []
         save
     end 
 
@@ -31,5 +33,9 @@ class Gamerfluent::VideoGame
 
     def save 
         @@all << self 
+    end 
+
+    def informed?
+        !!@description
     end 
 end 
