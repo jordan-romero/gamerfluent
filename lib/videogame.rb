@@ -8,7 +8,7 @@ class Gamerfluent::VideoGame
 
     @@all = []
 
-    attr_accessor :name, :id, :description, :rating, :metacritic, :genres 
+    attr_accessor :id, :name, :description, :rating, :metacritic, :genres 
 
     def self.all
         @@all
@@ -37,5 +37,15 @@ class Gamerfluent::VideoGame
 
     def informed?
         !!@description
+    end 
+
+    def populate_game(description, rating, metacritic)
+        @description = description
+        @rating = rating 
+        @metacritic = metacritic
+    end 
+
+    def all_information
+        "#{name}  #{id}\n\n Rating: #{rating}     MetacriticScore: #{metacritic}\n\n Synopsis:\n#{description}"
     end 
 end 

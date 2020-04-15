@@ -20,15 +20,12 @@ class Gamerfluent::Cli_manager
   end
 end 
 
-  # def informed?
-  #   !!@description
-  # end 
-
   def display_game(i)
     g = Gamerfluent::VideoGame.all[i]
     Gamerfluent::API_parser.get_more_game_info(g) if !g.informed?
+    puts g.all_information
     puts "Press any key to continue:"
-    gets 
+    gets  
   end 
 
   def get_videogame_choice
@@ -55,7 +52,7 @@ end
     puts "Welcome to Gamerfluent!" 
     puts "Learn more about games to"
     puts "decide what to play next!"
-    sleep(2)
+    sleep(1)
     puts "\n\n\n\n\n"
   end 
 

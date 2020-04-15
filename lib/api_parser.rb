@@ -8,20 +8,20 @@ class Gamerfluent::API_parser
   BASE_URL = "https://api.rawg.io/api/"
 
   def self.get_games
-    url = BASE_URL + "games?dates=2019-01-01,2019-12-31&ordering=-rating"
+    url = BASE_URL + "games"
     result = HTTParty.get(url)
     Gamerfluent::VideoGame.mass_create_from_api(result["results"])
   end 
 
-  # def self.get_more_game_info(videogame)
-  #   id = videogame.id 
-  #   result = HTTParty.get(id)
-  #   description = result["description"]
-  #   rating = result["rating"]
-  #   metacritic = result["metacritic"]
-  #   genres = result["genres"].map {|h| h["id"]["name"]}
-   
-  # end 
+      def self.get_more_game_info(videogame)
+      url = BASE_URL + "games/{id}" + videogame.id.to_s
+      result = HTTParty.get(url)
+      description = result["description"]
+      rating = result["rating"]
+      metacritic = result["metacritic"]
+      # genres = result["genres"].map {|h| h["id"]["name"]}
+      videogame.populate_game(description, rating, metacritic)
+    end 
 end 
  
 
