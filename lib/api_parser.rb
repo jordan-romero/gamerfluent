@@ -13,11 +13,15 @@ class Gamerfluent::API_parser
     Gamerfluent::VideoGame.mass_create_from_api(result["results"])
   end 
 
-  def self.get_more_game_info(videogame)
-    id = videogame.id 
-    result = HTTParty.get(id)
-    binding.pry
-  end 
+  # def self.get_more_game_info(videogame)
+  #   id = videogame.id 
+  #   result = HTTParty.get(id)
+  #   description = result["description"]
+  #   rating = result["rating"]
+  #   metacritic = result["metacritic"]
+  #   genres = result["genres"].map {|h| h["id"]["name"]}
+   
+  # end 
 end 
  
 

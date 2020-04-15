@@ -20,13 +20,13 @@ class Gamerfluent::Cli_manager
   end
 end 
 
-  def self.informed?
-    !!@description
-  end 
+  # def informed?
+  #   !!@description
+  # end 
 
   def display_game(i)
     g = Gamerfluent::VideoGame.all[i]
-    Gamerfluent::VideoGame.get_more_game_info(g) if g.!informed?
+    Gamerfluent::API_parser.get_more_game_info(g) if !g.informed?
     puts "Press any key to continue:"
     gets 
   end 
