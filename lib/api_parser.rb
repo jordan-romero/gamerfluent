@@ -14,13 +14,14 @@ class Gamerfluent::API_parser
   end 
 
       def self.get_more_game_info(videogame)
-      url = BASE_URL + "games/{id}" + videogame.id.to_s
+      url = BASE_URL + "games/" + videogame.id.to_s
       result = HTTParty.get(url)
       description = result["description"]
       rating = result["rating"]
       metacritic = result["metacritic"]
-      # genres = result["genres"].map {|h| h["id"]["name"]}
-      videogame.populate_game(description, rating, metacritic)
+      website = result["website"]
+      #genres = result["genres"].map {|h| h["id"]["name"]}
+      videogame.populate_game(description, rating, metacritic, website)
     end 
 end 
  

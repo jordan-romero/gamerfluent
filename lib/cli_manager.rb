@@ -23,7 +23,8 @@ end
   def display_game(i)
     g = Gamerfluent::VideoGame.all[i]
     Gamerfluent::API_parser.get_more_game_info(g) if !g.informed?
-    puts g.all_information
+    puts g.all_information   
+    puts "\n\n"
     puts "Press any key to continue:"
     gets  
   end 
