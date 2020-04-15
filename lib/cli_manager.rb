@@ -20,14 +20,14 @@ class Gamerfluent::Cli_manager
   end
 end 
 
-  def display_game
-    puts user_input
+  def display_game(i)
+    puts i
   end 
 
   def get_videogame_choice
     input = gets.strip.downcase
-    return input if input == "Exit"
-      if !valid? 
+    return input if input == "exit"
+      if !valid?(input)
         puts "Please try another selection."
         return "invalid"
     end 
@@ -48,12 +48,13 @@ end
   end 
 
   def display_games
-    Gamerfluent::VideoGame.all.each_with_index do |g,i|
+    Gamerfluent::VideoGame.all.each_with_index do |g, i|
       puts "#{i+1}) #{g}"
+    end 
   end 
 
   def display_instructions 
     puts "Please choose a game by number or type 'exit' to exit the program." 
   end 
 end 
-end 
+ 
