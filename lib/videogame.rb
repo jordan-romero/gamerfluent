@@ -25,6 +25,10 @@ class Gamerfluent::VideoGame
         save
     end 
 
+    def to_s 
+        name.capitalize 
+    end 
+
     def save 
         @@all << self 
     end 
