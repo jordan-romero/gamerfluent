@@ -10,7 +10,7 @@ class Gamerfluent::API_parser
   def self.get_games
     url = BASE_URL + "games?dates=2019-01-01,2019-12-31&ordering=-rating"
     result = HTTParty.get(url)
-    Gamerfluent::Video_game.mass_create_from_api(result["results"])
+    Gamerfluent::VideoGame.mass_create_from_api(result["results"])
   end 
 end 
  

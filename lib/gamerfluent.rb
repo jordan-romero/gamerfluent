@@ -2,7 +2,7 @@ require_relative "./gamerfluent/version"
 require 'httparty'
 require_relative "./cli_manager"
 require_relative "./api_parser"
-require_relative "./video_game"
+require_relative "./videogame"
 
 
 module Gamerfluent

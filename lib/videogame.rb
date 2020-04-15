@@ -4,7 +4,7 @@
 #should be able to save all of the games 
 \
 
-class Gamerfluent::Video_game
+class Gamerfluent::VideoGame
 
     @@all = []
 
