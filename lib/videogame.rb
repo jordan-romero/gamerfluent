@@ -39,14 +39,16 @@ class Gamerfluent::VideoGame
         !!@description
     end 
 
-    def populate_game(description, rating, metacritic, website)
+    def populate_game(description, rating, metacritic, website, genres)
         @description = description
         @rating = rating 
         @metacritic = metacritic
         @website = website 
+        @genres = []
     end 
 
     def all_information
-        "#{name}  #{id}\n\n Rating: #{rating}     MetacriticScore: #{metacritic}\n\n Synopsis:\n#{description}\n\n\n\For more information, visit:\n\n#{website}"
+        "#{name}  \n\nRating: #{rating}     Metacritic Score: #{metacritic}\n\n Genres:#{genres}\n\nSynopsis:\n#{description}\n\n\nFor more information, visit:\n\n#{website}"
     end 
+    
 end 

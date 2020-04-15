@@ -20,8 +20,8 @@ class Gamerfluent::API_parser
       rating = result["rating"]
       metacritic = result["metacritic"]
       website = result["website"]
-      #genres = result["genres"].map {|h| h["id"]["name"]}
-      videogame.populate_game(description, rating, metacritic, website)
+      genres = result["genres"].map {|h| h["id"].to_s["name"]}
+      videogame.populate_game(description, rating, metacritic, website, genres)
     end 
 end 
  

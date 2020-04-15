@@ -1,6 +1,7 @@
 require 'httparty'
 require 'pry'
 require 'nokogiri'
+require 'open-uri'
 require_relative "./gamerfluent/version"
 require_relative "./cli_manager"
 require_relative "./api_parser"
