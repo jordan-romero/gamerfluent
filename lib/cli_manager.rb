@@ -14,7 +14,7 @@ class Gamerfluent::Cli_manager
     loop do 
     menu 
     input = get_videogame_choice 
-    break if input == "Exit"
+    break if input == "exit"
     next if input == "invalid"
     display_game(input)
   end
