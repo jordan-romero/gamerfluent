@@ -4,6 +4,7 @@ require_relative "./cli_manager"
 require_relative "./api_parser"
 require_relative "./video_game"
 
+
 module Gamerfluent
   class Error < StandardError; end
   # Your code goes here...

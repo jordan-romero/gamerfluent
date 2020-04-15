@@ -8,13 +8,12 @@ class Gamerfluent::API_parser
   BASE_URL = "https://api.rawg.io/api/"
 
   def self.get_games
-    url = BASE_URL + "games"
+    url = BASE_URL + "games?dates=2019-01-01,2019-12-31&ordering=-rating"
     result = HTTParty.get(url)
-    #Gamerfluent::Video_game.mass_create_from_api([])
+    Gamerfluent::Video_game.mass_create_from_api(result["results"])
   end 
 end 
  
 
 
 
-#need to parse through a list of games and allow a user to ask to see metacritic score (rating), genre, synopsis
