@@ -1,10 +1,21 @@
 
 class Gamerfluent::Cli_manager 
   def start
+    logo
     introduction 
     get_game_data
     videogame_loop 
   end 
+
+  def logo
+    puts "
+
+ ██████   █████  ███    ███ ███████ ██████  ███████ ██      ██    ██ ███████ ███    ██ ████████ 
+ ██       ██   ██ ████  ████ ██      ██   ██ ██      ██      ██    ██ ██      ████   ██    ██    
+ ██   ███ ███████ ██ ████ ██ █████   ██████  █████   ██      ██    ██ █████   ██ ██  ██    ██    
+ ██    ██ ██   ██ ██  ██  ██ ██      ██   ██ ██      ██      ██    ██ ██      ██  ██ ██    ██    
+  ██████  ██   ██ ██      ██ ███████ ██   ██ ██      ███████  ██████  ███████ ██   ████    ██  "
+  end
 
   def get_game_data
     Gamerfluent::API_parser.get_games 
@@ -31,7 +42,7 @@ end
 
   def get_videogame_choice
     input = gets.strip.downcase
-    return input if input == "exit"
+    return input if input == "exit" 
       if !valid?(input)
         puts "Please try another selection."
         return "invalid"
@@ -64,6 +75,7 @@ end
   end 
 
   def display_instructions 
+    puts "\n\n"
     puts "Please choose a game by number or type 'exit' to exit the program." 
   end 
 
