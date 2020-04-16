@@ -1,9 +1,16 @@
 
 class Gamerfluent::Cli_manager 
+
+  def initialize 
+    @page = 0  
+    @limit = 20 
+  end 
+
   def start
     logo
     introduction 
-    get_game_data
+    get_game_data(@page += 1)
+
     videogame_loop 
   end 
 
@@ -17,17 +24,29 @@ class Gamerfluent::Cli_manager
   ██████  ██   ██ ██      ██ ███████ ██   ██ ██      ███████  ██████  ███████ ██   ████    ██  "
   end
 
-  def get_game_data
-    Gamerfluent::API_parser.get_games 
+  def get_game_data(page)
+    Gamerfluent::API_parser.get_games(page)
   end 
 
   def videogame_loop
     loop do 
     menu 
     input = get_videogame_choice 
-    break if input == "exit"
-    next if input == "invalid"
-    display_game(input)
+    case input 
+
+    when "exit"
+      break
+
+    when "invalid"
+      next 
+    
+    when "next"
+
+    when "previous"
+
+    else 
+      display_game(input)
+    end 
   end
 end 
 
@@ -37,12 +56,13 @@ end
     puts g.all_information   
     puts "\n\n"
     puts "Press any key to continue:"
-    gets  
+    gets 
   end 
 
   def get_videogame_choice
+    commands = ["exit", "next", "prev"]
     input = gets.strip.downcase
-    return input if input == "exit" 
+    return input.downcase if commands.include?(input.downcase)
       if !valid?(input)
         puts "Please try another selection."
         return "invalid"
@@ -60,25 +80,29 @@ end
   end 
   
   def introduction 
-    puts "\n\n\n\n\n"
-    puts "Welcome to Gamerfluent!" 
-    puts "Learn more about games to"
-    puts "decide what to play next!"
+    puts "\n\n\n\n"
+    puts "Welcome to Gamerfluent!"
+    puts "Learn more about games to decide what to play next!"
     sleep(1)
-    puts "\n\n\n\n\n"
+    puts "\n\n\n\n"
   end 
 
   def display_games
-    Gamerfluent::VideoGame.all.each_with_index do |g, i|
+    start, stop = get_page_range
+    puts "PAGE #{@page}"
+    Gamerfluent::VideoGame.all[start...stop].each_with_index do |g, i|
       puts "#{i+1}) #{g}"
     end 
   end 
 
-  def display_instructions 
-    puts "\n\n"
-    puts "Please choose a game by number or type 'exit' to exit the program." 
+  def get_page_range
+    return [(@page-1)* @limit]
   end 
 
-  
+  def display_instructions 
+    puts "Please choose a game by number or type 'exit' to exit the program."
+    puts "You may also type 'next' to see the next page of games.  #{"You may also type 'prev' to see the previous page of games." if @page > 1}"
+  end 
+
 end 
  

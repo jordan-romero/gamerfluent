@@ -8,7 +8,7 @@ class Gamerfluent::VideoGame
 
     @@all = []
 
-    attr_accessor :id, :name, :description, :rating, :metacritic, :website, :genres 
+    attr_accessor :id, :name, :description, :rating, :metacritic, :website, :genres
 
     def self.all
         @@all
@@ -48,7 +48,21 @@ class Gamerfluent::VideoGame
     end 
 
     def all_information
-        "#{name}  \n\nRating: #{rating}     Metacritic Score: #{metacritic}\n\n Genres: #{genres.join(", ")}\n\nSynopsis:\n#{description}\n\n\nFor more information, visit:\n\n#{website}"
+        <<-DESC      
+#{name}  
+
+Rating: #{rating}     Metacritic Score: #{metacritic}
+
+Genre(s): #{genres.join(", ")}
+
+Synopsis:
+#{description}
+
+
+For more information, visit:
+
+#{website}
+        DESC
     end 
     
 end 

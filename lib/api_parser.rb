@@ -7,10 +7,14 @@ class Gamerfluent::API_parser
 
   BASE_URL = "https://api.rawg.io/api/"
 
-  def self.get_games
-    url = BASE_URL + "games"
+  def self.get_games(page = 1)
+    url = BASE_URL + "games?page=#{+1}"
     result = HTTParty.get(url)
     Gamerfluent::VideoGame.mass_create_from_api(result["results"])
+      return {
+         next: result["next"],
+        previous: result["previous"]
+      }
   end 
 
       def self.get_more_game_info(videogame)
@@ -26,6 +30,7 @@ class Gamerfluent::API_parser
       videogame.populate_game(description, rating, metacritic, website, genres)
     end 
 end 
+
  
 
 
