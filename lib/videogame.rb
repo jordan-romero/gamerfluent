@@ -44,11 +44,11 @@ class Gamerfluent::VideoGame
         @rating = rating 
         @metacritic = metacritic
         @website = website 
-        @genres = []
+        @genres = genres 
     end 
 
     def all_information
-        "#{name}  \n\nRating: #{rating}     Metacritic Score: #{metacritic}\n\n Genres:#{genres}\n\nSynopsis:\n#{description}\n\n\nFor more information, visit:\n\n#{website}"
+        "#{name}  \n\nRating: #{rating}     Metacritic Score: #{metacritic}\n\n Genres: #{genres.join(", ")}\n\nSynopsis:\n#{description}\n\n\nFor more information, visit:\n\n#{website}"
     end 
     
 end 
