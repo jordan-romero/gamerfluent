@@ -7,8 +7,8 @@ class Gamerfluent::API_parser
 
   BASE_URL = "https://api.rawg.io/api/"
 
-  def self.get_games(page = 1)
-    url = BASE_URL + "games?page=#{+1}"
+  def self.get_games(page)
+    url = BASE_URL + "games?page=#{page}"
     result = HTTParty.get(url)
     Gamerfluent::VideoGame.mass_create_from_api(result["results"])
       return {
