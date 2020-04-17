@@ -44,9 +44,11 @@ class Gamerfluent::Cli_manager
         get_game_data(@page)
       end 
 
-    when "previous"
+    when "prev"
       if @page <= 1 
+        puts "\n\n"
         puts "You are already on page 1."
+        puts "\n\n"
       else 
         @page -= 1  
       end 
@@ -90,6 +92,7 @@ class Gamerfluent::Cli_manager
   def display_games
     start, stop = get_page_range
     puts "PAGE #{@page}"
+    puts "\n\n"
     Gamerfluent::VideoGame.all[start...stop].each_with_index do |g, i|
       puts "#{i+1}) #{g}"
     end 
@@ -100,6 +103,7 @@ class Gamerfluent::Cli_manager
   end 
 
   def display_instructions 
+    puts "\n\n"
     puts "Please choose a game by number or type 'exit' to exit the program."
     puts "\n\n"
     puts "You may also type 'next' to see the next page of games.  #{"You may also type 'prev' to see the previous page of games." if @page > 1}"
