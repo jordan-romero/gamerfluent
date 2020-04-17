@@ -1,8 +1,7 @@
 #should instatiate video games with a name and id 
 #should store all games into an array of games
 #should iterate through the games to display different games 
-#should be able to save all of the games 
-\
+#should be able to save all of the games
 
 class Gamerfluent::VideoGame
 

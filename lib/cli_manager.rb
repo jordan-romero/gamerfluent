@@ -9,7 +9,6 @@ class Gamerfluent::Cli_manager
     introduction 
     @page += 1 
     get_game_data(@page)
-
     videogame_loop 
   end 
 
@@ -27,41 +26,42 @@ class Gamerfluent::Cli_manager
 
   def videogame_loop
     loop do 
-    menu 
-    input = get_videogame_choice 
-    case input 
+      menu 
+      input = get_videogame_choice 
+      case input 
 
-    when "exit"
+      when "exit"
       break
 
-    when "invalid"
+      when "invalid"
       next 
     
-    when "next"
-      @page += 1
-      _, stop = get_page_range
-      if Gamerfluent::VideoGame.all.length < stop 
-        get_game_data(@page)
-      end 
+      when "next"
+        @page += 1
+        _, stop = get_page_range
+        if Gamerfluent::VideoGame.all.length < stop 
+          get_game_data(@page)
+        end 
 
-    when "prev"
-      if @page <= 1 
-        puts "\n\n"
-        puts "You are already on page 1."
-        puts "\n\n"
+      when "prev"
+        if @page <= 1 
+          puts "\n\n"
+          puts "You are already on page 1."
+          puts "\n\n"
+        else 
+          @page -= 1  
+        end 
       else 
-        @page -= 1  
+         display_game(input)
       end 
-    else 
-      display_game(input)
     end 
-  end 
-  end 
+    end 
   
  
 
   def display_game(i)
-    g = Gamerfluent::VideoGame.all[i]
+    index = (@page-1) * 20 + i
+    g = Gamerfluent::VideoGame.all[index]
     Gamerfluent::API_parser.get_more_game_info(g) if !g.informed?
     puts g.all_information   
     puts "\n\n"
@@ -81,7 +81,7 @@ class Gamerfluent::Cli_manager
   end
 
   def valid?(i)
-    i.to_i.between?(1, Gamerfluent::VideoGame.all.length)
+    i.to_i.between?(1, 20) #calculate place in the array           
   end 
 
   def menu 

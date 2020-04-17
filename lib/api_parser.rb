@@ -1,7 +1,3 @@
-# require 'net/http'
-# require 'open-uri'
-# require 'json'
-
 
 class Gamerfluent::API_parser
 
@@ -11,10 +7,6 @@ class Gamerfluent::API_parser
     url = BASE_URL + "games?page=#{page}"
     result = HTTParty.get(url)
     Gamerfluent::VideoGame.mass_create_from_api(result["results"])
-      return {
-         next: result["next"],
-        previous: result["previous"]
-      }
   end 
 
       def self.get_more_game_info(videogame)
