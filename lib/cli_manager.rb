@@ -75,13 +75,13 @@ class Gamerfluent::Cli_manager
     return input.downcase if commands.include?(input.downcase)
     if !valid?(input)
       puts "Please try another selection."
-      return "invalid"
+    return "invalid"
     end 
     return input.to_i - 1 
   end
 
   def valid?(i)
-    i.to_i.between?(1, 20) #calculate place in the array           
+    i.to_i.between?(1, 20)           
   end 
 
   def menu 
