@@ -6,14 +6,24 @@ class Gamerfluent::Cli_manager
   end 
 
   def start
+    logo
     introduction 
     @page += 1 
     get_game_data(@page)
     videogame_loop 
   end 
 
+  def logo
+    puts "
+    ██████   █████  ███    ███ ███████ ██████  ███████ ██      ██    ██ ███████ ███    ██ ████████ 
+   ██       ██   ██ ████  ████ ██      ██   ██ ██      ██      ██    ██ ██      ████   ██    ██    
+   ██   ███ ███████ ██ ████ ██ █████   ██████  █████   ██      ██    ██ █████   ██ ██  ██    ██    
+   ██    ██ ██   ██ ██  ██  ██ ██      ██   ██ ██      ██      ██    ██ ██      ██  ██ ██    ██    
+    ██████  ██   ██ ██      ██ ███████ ██   ██ ██      ███████  ██████  ███████ ██   ████    ██    
+                                                                                                 "
+  end 
+
   def introduction 
-    puts "\n\n\n\n"
     puts "Welcome to Gamerfluent!"
     puts "Learn more about games to decide what to play next!"
     sleep(1)
@@ -103,7 +113,7 @@ class Gamerfluent::Cli_manager
   end 
 
   def display_instructions 
-    puts "\n\n"
+    puts "\n\n\n\n"
     puts "Please choose a game by number or type 'exit' to exit the program."
     puts "\n\n"
     puts "You may also type 'next' to see the next page of games.  #{"You may also type 'prev' to see the previous page of games." if @page > 1}"
