@@ -103,7 +103,7 @@ class Gamerfluent::Cli_manager
     start, stop = get_page_range
     puts "PAGE #{@page}"
     puts "\n\n"
-    Gamerfluent::VideoGame.all[start...stop].each_with_index do |g, i|
+    Gamerfluent::VideoGame.all[start...stop].each.with_index(start) do |g, i|
       puts "#{i+1}) #{g}"
     end 
   end 
