@@ -3,7 +3,7 @@ require_relative 'lib/gamerfluent/version'
 Gem::Specification.new do |spec|
   spec.name          = "gamerfluent"
   spec.version       = Gamerfluent::VERSION
-  spec.authors       = ["<github username>"]
+  spec.authors       = ["<github jordles113>"]
   spec.email         = ["<github email address>"]
 
   spec.summary       = %q{Write a short summary, because RubyGems requires one.}
