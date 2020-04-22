@@ -70,7 +70,7 @@ class Gamerfluent::Cli_manager
  
 
   def display_game(i)
-    index = (@page-1) * 20 + i
+    index = i.to_i - 1 
     g = Gamerfluent::VideoGame.all[index]
     Gamerfluent::API_parser.get_more_game_info(g) if !g.informed?
     puts g.all_information   
@@ -91,7 +91,7 @@ class Gamerfluent::Cli_manager
   end
 
   def valid?(i)
-    i.to_i.between?(1, 20)           
+    i.to_i.between?(1, Gamerfluent::VideoGame.all.length)           
   end 
 
   def menu 

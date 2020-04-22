@@ -32,7 +32,7 @@ class Gamerfluent::VideoGame
     end 
 
     def informed?
-        !!@description
+        !!@rating
     end 
 
     def populate_game(description, rating, metacritic, website, genres)
