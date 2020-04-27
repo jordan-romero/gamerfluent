@@ -70,7 +70,7 @@ class Gamerfluent::Cli_manager
  
 
   def display_game(i)
-    index = i.to_i - 1 
+    index = i.to_i  
     g = Gamerfluent::VideoGame.all[index]
     Gamerfluent::API_parser.get_more_game_info(g) if !g.informed?
     puts g.all_information   
